@@ -1,0 +1,27 @@
+- name: create directory
+  become: yes
+  become_user: '{{ item.username }}'
+  command: 'mkdir -p ~{{ item.username }}/git_private'
+  args:
+    chdir: '~{{ item.username }}'
+    creates: '~{{ item.username }}/git_private'
+  with_items: '{{ users }}'
+
+- name: clone dotfiles
+  become: yes
+  become_user: '{{ item.username }}'
+  command: 'git clone --depth=1 https://github.com/jmmgr/dotfiles'
+  args:
+    chdir: '~{{ item.username }}/git_private'
+    creates: '~{{ item.username }}/git_private/dotfiles'
+  with_items: '{{ users }}'
+
+- name: add bin permissons
+  file: 
+    path: '~{{ item.username }}/git_private/dotfiles/bin'
+    owner: '{{ item.username }}' 
+    group: '{{ item.group }}' 
+    mode: 0755 
+    state: directory
+    recurse: yes
+  with_items: '{{ users }}'

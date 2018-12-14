@@ -1,0 +1,7 @@
+---
+# install fzf
+- name: install fzf
+  package:
+    name: fzf
+    state: present
+  become: true

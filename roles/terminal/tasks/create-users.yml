@@ -1,0 +1,11 @@
+---
+# create users if doesn't exists
+- name: create users
+  become: yes
+  user:
+    name: '{{ item.username }}'
+    shell: /bin/bash
+    group: '{{ item.group }}'
+    create_home: true
+  with_items: '{{ users }}'
+

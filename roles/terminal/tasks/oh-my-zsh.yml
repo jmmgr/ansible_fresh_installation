@@ -1,0 +1,33 @@
+---
+# first install dependencies
+- name: install dependencies
+  become: yes
+  package:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - git
+    - zsh
+
+- name: clone oh-my-zsh for users
+  become: yes
+  become_user: '{{ item.username }}'
+  command: 'git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git .oh-my-zsh'
+  args:
+    chdir: '~{{ item.username }}'
+    creates: '~{{ item.username }}/.oh-my-zsh'
+  with_items: '{{ users }}'
+
+- name: set default shell for users
+  become: yes
+  user:
+    name: '{{ item.username }}'
+    shell: /bin/zsh
+  with_items: '{{ users }}'
+
+- name: add a soft link to .zshrc
+  file:
+    src: '~{{ item.username }}/git_private/dotfiles/.zshrc'
+    dest: '~{{ item.username }}/.zshrc'
+    state: link
+  with_items: '{{ users }}'

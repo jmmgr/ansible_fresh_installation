@@ -1,0 +1,14 @@
+---
+# install tmux
+- name: install tmux
+  package:
+    name: tmux
+    state: present
+  become: true
+
+- name: add a soft link to .tmux.conf
+  file:
+    src: '~{{ item.username }}/git_private/dotfiles/.tmux.conf'
+    dest: '~{{ item.username }}/.tmux.conf'
+    state: link
+  with_items: '{{ users }}'
