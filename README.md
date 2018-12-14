@@ -11,8 +11,7 @@ Add it in the hosts file
 
 ### local
 
-Install ansible
-add ```localhost``` as the host
+Install ansible and add ```localhost``` in the hosts file
 
 ## Run 
 ```
