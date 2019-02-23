@@ -4,4 +4,4 @@
   flatpak:
     name: org.telegram.desktop
     state: present
-    method: user
+    method: system

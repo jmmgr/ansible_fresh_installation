@@ -4,4 +4,4 @@
   flatpak:
     name: org.videolan.VLC
     state: present
-    method: user
+    method: system

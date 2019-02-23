@@ -4,5 +4,5 @@
   flatpak:
     name: com.spotify.Client
     state: present
-    method: user
+    method: system
 

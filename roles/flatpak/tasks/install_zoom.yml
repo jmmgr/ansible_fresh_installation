@@ -4,4 +4,4 @@
   flatpak:
     name: us.zoom.Zoom
     state: present
-    method: user
+    method: system
