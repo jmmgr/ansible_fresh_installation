@@ -1,0 +1,18 @@
+---
+# install urxvt
+- name: install rxvt-unicode
+  package:
+    name: rxvt-unicode
+    state: present
+  become: true
+
+- name: Move .Xresources
+  command: mv '~{{ item.username }}/.Xresources' '~{{ item.username }}/.Xresources_old'
+  with_items: '{{ users }}'
+  
+- name: add a soft link to .Xresources
+  file:
+    src: '~{{ item.username }}/git_private/dotfiles/.Xresources'
+    dest: '~{{ item.username }}/.Xresources'
+    state: link
+  with_items: '{{ users }}'

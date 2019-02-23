@@ -1,0 +1,7 @@
+---
+# install Sequeler
+- name: Install Sequeler
+  flatpak:
+    name: com.github.alecaddd.sequeler
+    state: present
+    method: user

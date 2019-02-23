@@ -1,0 +1,19 @@
+---
+# add the i3 config, and install fonts etc
+- name: Move .i3/config
+  command: mv '~{{ item.username }}/.i3/config' '~{{ item.username }}/.i3/config_old'
+  with_items: '{{ users }}'
+  
+- name: add a soft link to .i3/config
+  file:
+    src: '~{{ item.username }}/git_private/dotfiles/.i3/config'
+    dest: '~{{ item.username }}/.i3/config'
+    state: link
+  with_items: '{{ users }}'
+
+- name: add a soft link to .fonts
+  file:
+    src: '~{{ item.username }}/git_private/dotfiles/.fonts'
+    dest: '~{{ item.username }}/.fonts'
+    state: link
+  with_items: '{{ users }}'

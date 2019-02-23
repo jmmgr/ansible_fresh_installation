@@ -1,0 +1,7 @@
+---
+# install files (this is the elementary file manager)
+- name: install pantheon-files
+  package:
+    name: pantheon-files
+    state: present
+  become: true

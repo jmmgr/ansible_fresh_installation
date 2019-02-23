@@ -1,0 +1,7 @@
+---
+# install Telegram
+- name: Install Telegram
+  flatpak:
+    name: org.telegram.desktop
+    state: present
+    method: user

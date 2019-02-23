@@ -1,0 +1,6 @@
+---
+# tasks file for i3_config
+- import_tasks: urxvt.yml
+- import_tasks: caps_to_ctrl.yml
+- import_tasks: i3_config.yml
+- import_tasks: files.yml

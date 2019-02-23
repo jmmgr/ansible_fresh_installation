@@ -1,0 +1,10 @@
+---
+# tasks file for flatpak
+- import_tasks: install_flatpak.yml
+- import_tasks: install_spotify.yml
+- import_tasks: install_syncthing.yml
+- import_tasks: install_postman.yml
+- import_tasks: install_telegram.yml
+- import_tasks: install_sequeler.yml
+- import_tasks: install_vlc.yml
+- import_tasks: install_zoom.yml

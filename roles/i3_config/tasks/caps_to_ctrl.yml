@@ -1,0 +1,12 @@
+---
+# we will make a copy of .profile, and copy the new one
+- name: Move .profile
+  command: mv '~{{ item.username }}/.profile' '~{{ item.username }}/.profile_old'
+  with_items: '{{ users }}'
+  
+- name: add a soft link to .profile
+  file:
+    src: '~{{ item.username }}/git_private/dotfiles/.profile'
+    dest: '~{{ item.username }}/.profile'
+    state: link
+  with_items: '{{ users }}'

@@ -1,0 +1,7 @@
+---
+# install Syncthing
+- name: Install Syncthing
+  flatpak:
+    name: me.kozec.syncthingtk
+    state: present
+    method: user
