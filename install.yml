@@ -1,7 +1,7 @@
 ---
 - hosts: all
   roles:
-    - role: flatpak
+    - role: terminal
       users:
         - username: jesus
-          group: wheel
+          group: jesus
